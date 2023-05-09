@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\src",
+    "\\app\\src\\main",
+    "\\app\\src\\main\\java",
+    "\\app\\src\\main\\java\\de",
+    "\\app\\src\\main\\java\\de\\westnordost",
+    "\\app\\src\\main\\java\\de\\westnordost\\streetcomplete",
+    "\\app\\src\\main\\java\\de\\westnordost\\streetcomplete\\quests",
+    "\\app\\src\\main\\java\\de\\westnordost\\streetcomplete\\quests\\step_count"
+  ],
+  "SelectedNode": "\\app\\src\\main\\java\\de\\westnordost\\streetcomplete\\quests\\step_count\\AddStepCount.kt",
+  "PreviewInSolutionExplorer": false
+}
