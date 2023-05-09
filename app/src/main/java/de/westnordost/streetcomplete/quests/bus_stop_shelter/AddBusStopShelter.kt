@@ -20,7 +20,6 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
         )
         and physically_present != no and naptan:BusStopType != HAR
         and !covered
-        and location !~ underground|indoor
         and indoor != yes
         and tunnel != yes
         and (!level or level >= 0)

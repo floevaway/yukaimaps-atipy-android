@@ -2,11 +2,12 @@ package de.westnordost.streetcomplete.view.image_select
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 
 /** Select one items from a groupable list of items  */
-class GroupedImageSelectAdapter<T> :
+class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
     var cellLayoutId = R.layout.cell_labeled_image_select
@@ -49,6 +50,14 @@ class GroupedImageSelectAdapter<T> :
     }
 
     val listeners = mutableListOf<(GroupableDisplayItem<T>?) -> Unit>()
+
+    init {
+        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return if (_items[position].isGroup) gridLayoutManager.spanCount else 1
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val layoutId = if (viewType == GROUP) groupCellLayoutId else cellLayoutId

@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.lit.LitStatus.AUTOMATIC
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import de.westnordost.streetcomplete.util.ktx.isArea
 
 class WayLitForm : AbstractOsmQuestForm<WayLitOrIsStepsAnswer>() {
 
@@ -23,10 +24,13 @@ class WayLitForm : AbstractOsmQuestForm<WayLitOrIsStepsAnswer>() {
     )
 
     private fun createConvertToStepsAnswer(): AnswerItem? {
-        return if (element.couldBeSteps()) {
+        val way = element as? Way ?: return null
+        return if (!way.isArea() && (way.tags["highway"] == "footway" || way.tags["highway"] == "path")) {
             AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
                 applyAnswer(IsActuallyStepsAnswer)
             }
-        } else null
+        } else {
+            null
+        }
     }
 }

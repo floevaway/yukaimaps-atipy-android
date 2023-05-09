@@ -19,7 +19,6 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
           and !name and !name:left and !name:right
           and !ref
           and noname != yes
-          and name:signed != no
           and !junction
           and area != yes
           and (

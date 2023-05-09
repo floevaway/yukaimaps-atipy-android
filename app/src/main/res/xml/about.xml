@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <de.westnordost.streetcomplete.screens.ActivatablePreference
-        android:fragment="de.westnordost.streetcomplete.screens.about.ChangelogFragment"
+    <Preference
         android:key="version"
         android:title="@string/about_title_changelog"
         android:widgetLayout="@layout/widget_image_next"/>
 
-    <de.westnordost.streetcomplete.screens.ActivatablePreference
-        android:fragment="de.westnordost.streetcomplete.screens.about.CreditsFragment"
+    <Preference
         android:key="authors"
         android:title="@string/about_title_authors"
         android:summary="@string/about_summary_authors"
@@ -42,8 +40,7 @@
         android:title="@string/about_title_faq"
         android:widgetLayout="@layout/widget_image_open_in_browser"/>
 
-    <de.westnordost.streetcomplete.screens.ActivatablePreference
-        android:fragment="de.westnordost.streetcomplete.screens.about.PrivacyStatementFragment"
+    <Preference
         android:key="privacy"
         android:title="@string/about_title_privacy_statement"
         android:summary="@string/about_summary_privacy_statement"

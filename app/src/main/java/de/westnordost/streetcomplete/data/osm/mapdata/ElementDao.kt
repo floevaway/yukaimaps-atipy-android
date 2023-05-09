@@ -45,19 +45,12 @@ class ElementDao(
 
     fun getAll(bbox: BoundingBox): List<Element> {
         val nodes = nodeDao.getAll(bbox)
-        val nodeIds = nodes.map { it.id }.toSet()
+        val nodeIds = nodes.map { it.id }
         val ways = wayDao.getAllForNodes(nodeIds)
         val wayIds = ways.map { it.id }
-        val additionalWayNodeIds = ways
-            .asSequence()
-            .flatMap { it.nodeIds }
-            .filter { it !in nodeIds }
-            .toList()
-        val additionalNodes = nodeDao.getAll(additionalWayNodeIds)
-        val relations = relationDao.getAllForElements(nodeIds = additionalWayNodeIds + nodeIds, wayIds = wayIds)
-        val result = ArrayList<Element>(nodes.size + additionalNodes.size + ways.size + relations.size)
+        val relations = relationDao.getAllForElements(nodeIds = nodeIds, wayIds = wayIds)
+        val result = ArrayList<Element>(nodes.size + ways.size + relations.size)
         result.addAll(nodes)
-        result.addAll(additionalNodes)
         result.addAll(ways)
         result.addAll(relations)
         return result

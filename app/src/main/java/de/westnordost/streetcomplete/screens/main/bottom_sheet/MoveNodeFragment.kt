@@ -21,7 +21,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -59,7 +58,7 @@ class MoveNodeFragment :
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
     private val countryInfos: CountryInfos by inject()
 
-    override val elementKey: ElementKey by lazy { node.key }
+    override val elementKey: ElementKey by lazy { ElementKey(node.type, node.id) }
 
     private lateinit var node: Node
     private lateinit var editType: ElementEditType
@@ -133,8 +132,8 @@ class MoveNodeFragment :
         val pos = getMarkerPosition() ?: return
         if (!checkIsDistanceOkAndUpdateText(pos)) return
         viewLifecycleScope.launch {
-            val action = MoveNodeAction(node, pos)
-            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey", action)
+            val action = MoveNodeAction(pos)
+            elementEditsController.add(editType, node, ElementPointGeometry(node.position), "survey", action)
             listener?.onMovedNode(editType, pos)
         }
     }

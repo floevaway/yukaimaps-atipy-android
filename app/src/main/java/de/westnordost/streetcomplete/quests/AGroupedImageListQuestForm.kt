@@ -55,20 +55,14 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector = GroupedImageSelectAdapter()
+        imageSelector = GroupedImageSelectAdapter(GridLayoutManager(activity, itemsPerRow))
         itemsByString = allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val layoutManager = GridLayoutManager(activity, itemsPerRow)
-        layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return if (imageSelector.items[position].isGroup) layoutManager.spanCount else 1
-            }
-        }
-        binding.list.layoutManager = layoutManager
+        binding.list.layoutManager = imageSelector.gridLayoutManager
         binding.list.isNestedScrollingEnabled = false
 
         binding.selectHintLabel.setText(R.string.quest_select_hint_most_specific)
@@ -88,7 +82,7 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     }
 
     private fun scrollTo(index: Int) {
-        val item = binding.list.layoutManager?.findViewByPosition(index) ?: return
+        val item = imageSelector.gridLayoutManager.findViewByPosition(index) ?: return
         val itemPos = IntArray(2)
         item.getLocationInWindow(itemPos)
         val scrollViewPos = IntArray(2)

@@ -15,7 +15,7 @@ class CreatedElementsDaoTest : ApplicationDbTestCase() {
         dao = CreatedElementsDao(database)
     }
 
-    @Test fun putGetDelete() {
+    @Test fun addGetDelete() {
         assertTrue(dao.getAll().isEmpty())
 
         val elements = listOf(

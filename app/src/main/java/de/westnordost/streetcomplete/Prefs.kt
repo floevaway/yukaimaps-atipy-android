@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatDelegate
 
 /** Constant class to have all the identifiers for shared preferences in one place  */
 object Prefs {
+    const val OIDC = "oidc"
+    const val OIDC_STATE = "oidc.state"
     const val OAUTH = "oauth"
     const val OAUTH_ACCESS_TOKEN = "oauth.accessToken"
     const val OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret"

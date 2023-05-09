@@ -88,22 +88,19 @@ fun MapData.findAllKerbNodes(): Iterable<Node> {
     // Kerbs can be defined in three ways (see https://github.com/streetcomplete/StreetComplete/issues/1305#issuecomment-688333976):
     return footwayNodes.filter {
         // 1. either as a node tagged with barrier = kerb on a footway
-        // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/kerb-node.svg
         it.tags["barrier"] == "kerb"
         // 2. or as the shared node at which a way tagged with barrier = kerb crosses a footway
-        // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/kerb-way.svg
         || it.id in kerbBarrierNodeIds
         // 3. or implicitly as the shared node between a footway tagged with footway = crossing and
         //    another tagged with footway = sidewalk that is the continuation of the way and is not
         //    and intersection (thus, has exactly two connections: to the sidewalk and to the crossing)
-        // see https://github.com/streetcomplete/StreetComplete/blob/master/res/documentation/kerbs/crossing-style1.svg
         || it.id in crossingEndNodeIds
     }
 }
 
 /** Find all node ids of end nodes of crossings that are (very probably) kerbs within the given
  *  collection of [ways] */
-private fun MapData.findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
+private fun findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long> {
     /* using asSequence in this function so to not copy potentially huge amounts (e.g. almost all
        nodes of all ways in the data set) of data into temporary lists */
 
@@ -146,18 +143,6 @@ private fun MapData.findCrossingKerbEndNodeIds(ways: Collection<Way>): Set<Long>
         .flatMap { it.nodeIds.allExceptFirstAndLast() }
         .forEach { connectionsById.remove(it) }
     if (connectionsById.isEmpty()) return emptySet()
-
-    // skip nodes of ways that already have barrier=kerb node as not one of their endnodes
-    ways.asSequence()
-        .forEach { way ->
-            val hasKerbAsNonEndNode = way.nodeIds.allExceptFirstAndLast().any {
-                getNode(it)?.tags?.get("barrier") == "kerb"
-            }
-            if (hasKerbAsNonEndNode) {
-                connectionsById.remove(way.nodeIds.first())
-                connectionsById.remove(way.nodeIds.last())
-            }
-        }
 
     return connectionsById.keys
 }

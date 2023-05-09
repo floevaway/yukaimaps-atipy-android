@@ -1411,6 +1411,9 @@
                 "landuse/military/barracks": {
                     "name": "Baraci"
                 },
+                "landuse/military/danger_area": {
+                    "name": "Zonă de Pericol"
+                },
                 "landuse/military/range": {
                     "name": "Gamă Militară"
                 },

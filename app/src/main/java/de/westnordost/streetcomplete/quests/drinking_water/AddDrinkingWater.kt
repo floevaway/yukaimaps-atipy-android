@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override val elementFilter = """
-        nodes, ways with (
+        nodes with (
           man_made = water_tap
           or man_made = water_well
           or natural = spring
@@ -20,8 +20,6 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         and access !~ private|no and indoor != yes
         and !drinking_water and !drinking_water:legal and amenity != drinking_water
         and (!seasonal or seasonal = no)
-        and (!disused or disused = no)
-        and (!ruins or ruins = no)
     """
     override val changesetComment = "Specify whether water is drinkable"
     override val wikiLink = "Key:drinking_water"
@@ -34,13 +32,10 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
             nodes with
-             (
-                 man_made = water_tap
-                 or man_made = water_well
-                 or natural = spring
-                 or amenity = drinking_water
-             )
-             and access !~ private|no
+             man_made = water_tap
+             or man_made = water_well
+             or natural = spring
+             or amenity = drinking_water
         """)
 
     override fun createForm() = AddDrinkingWaterForm()

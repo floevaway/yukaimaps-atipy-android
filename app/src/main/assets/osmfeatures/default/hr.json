@@ -113,12 +113,8 @@
                     "label": "Dopušten pristup",
                     "options": {
                         "customers": "Samo mušterije",
-                        "no": "Nedozvoljeno",
                         "permissive": "Dopuštenje",
-                        "permit": "Samo s dozvolom",
-                        "private": "Privatno",
-                        "unknown": "Nepoznato",
-                        "yes": "Javno"
+                        "permit": "Samo s dozvolom"
                     },
                     "terms": "dopušten pristup,dopuštenje,pristup"
                 },
@@ -233,18 +229,7 @@
                     "label": "Umjetnik"
                 },
                 "artwork_type": {
-                    "label": "Vrsta",
-                    "options": {
-                        "bust": "Bista",
-                        "graffiti": "Grafiti",
-                        "installation": "Umjetnička instalacija",
-                        "mosaic": "Mozaik",
-                        "mural": "Mural",
-                        "painting": "Slika",
-                        "relief": "Reljef",
-                        "sculpture": "Skulptura",
-                        "statue": "Kip"
-                    }
+                    "label": "Vrsta"
                 },
                 "ascent": {
                     "terms": "ukupna uzbrdica,uzbrdica"
@@ -272,18 +257,7 @@
                     "terms": "birtija,kafić,bar"
                 },
                 "barrier": {
-                    "label": "Vrsta",
-                    "options": {
-                        "bollard": "Stupić",
-                        "chain": "Lanac",
-                        "city_wall": "Gradske zidine",
-                        "fence": "Ograda",
-                        "gate": "Kapija",
-                        "hedge": "Živica",
-                        "kerb": "Rubnjak",
-                        "retaining_wall": "Potporni zid",
-                        "wall": "Zid"
-                    }
+                    "label": "Vrsta"
                 },
                 "bath/open_air": {
                     "label": "Vanjsko kupalište"
@@ -339,9 +313,6 @@
                 },
                 "building": {
                     "label": "Zgrada",
-                    "options": {
-                        "apartments": "Stambena zgrada"
-                    },
                     "terms": "zgrada,građevina"
                 },
                 "building/levels": {
@@ -632,13 +603,7 @@
                     "label": "Hitna pomoć"
                 },
                 "entrance": {
-                    "label": "Vrsta",
-                    "options": {
-                        "entrance": "Samo ulaz",
-                        "home": "Kućni ulaz",
-                        "main": "Glavni",
-                        "staircase": "Stubište"
-                    }
+                    "label": "Vrsta"
                 },
                 "except": {
                     "label": "Iznimke"
@@ -660,7 +625,7 @@
                 },
                 "fire_hydrant/type": {
                     "options": {
-                        "pillar": "Stup/nadzemni",
+                        "pillar": "Stub/nadzemni",
                         "underground": "Podzemni",
                         "wall": "Zid"
                     }
@@ -753,11 +718,6 @@
                 },
                 "historic/wreck/visible_at_low_tide": {
                     "label": "Vidljivo kod oseke"
-                },
-                "holding_position/type": {
-                    "options": {
-                        "runway": "Uzletno-sletna staza"
-                    }
                 },
                 "hoops": {
                     "label": "Obruči",
@@ -1160,6 +1120,17 @@
                         "surface": "Površinski",
                         "underground": "Podzemni"
                     }
+                },
+                "parking/orientation": {
+                    "label": "Orijentacija",
+                    "options": {
+                        "diagonal": "Dijagonalno na ulicu",
+                        "parallel": "Paralelno sa ulicom",
+                        "perpendicular": "Okomito na ulicu"
+                    }
+                },
+                "parking/side/orientation": {
+                    "label": "Orijentacija parkiranja"
                 },
                 "payment_multi": {
                     "label": "Načini plaćanja",
@@ -1601,13 +1572,6 @@
                     },
                     "terms": "vrsta korištenja"
                 },
-                "utility": {
-                    "options": {
-                        "gas": "Plin",
-                        "power": "Električna energija",
-                        "telecom": "Telekomunikacije"
-                    }
-                },
                 "vhf": {
                     "terms": "vhf kanal"
                 },
@@ -1690,10 +1654,6 @@
                     "name": "Zračna luka",
                     "terms": "zračna luka,aerodrom"
                 },
-                "aeroway/apron": {
-                    "name": "Stajanka za parkiranje zrakoplova",
-                    "terms": "platforma"
-                },
                 "aeroway/hangar": {
                     "name": "Hangar",
                     "terms": "hangar,garaža za avione,garaža za zrakoplove"
@@ -1702,16 +1662,9 @@
                     "name": "Heliodrom",
                     "terms": "uzletište za helikopter,sletište za helikopter,pista za helikoptere,helikopter"
                 },
-                "aeroway/holding_position": {
-                    "name": "Pozicija za čekanje",
-                    "terms": "površina za čekanje"
-                },
-                "aeroway/parking_position": {
-                    "name": "Parkirna pozicija za zrakoplov"
-                },
                 "aeroway/runway": {
                     "name": "Uzletno-sletna staza",
-                    "terms": "pista,uzletna staza,sletna staza,avionska pista,zrakoplovna pista,staza za uzlijetanje i slijetanje"
+                    "terms": "pista,uzletna staza,sletna staza,avionska pista,zrakoplovna pista"
                 },
                 "aeroway/taxiway": {
                     "name": "Rulnica",
@@ -2085,7 +2038,7 @@
                     "name": "Košara za pseći izmet"
                 },
                 "amenity/waste_basket": {
-                    "name": "Koš za smeće",
+                    "name": "Kanta za smeće",
                     "terms": "smeće,koš za smeće,kanta za smeće"
                 },
                 "amenity/waste_disposal": {
@@ -2183,9 +2136,6 @@
                 "building": {
                     "name": "Građevina",
                     "terms": "zgrada,kuća,građevina,neboder"
-                },
-                "building/apartments": {
-                    "name": "Stambena zgrada"
                 },
                 "building/barn": {
                     "name": "Ambar",
@@ -2460,9 +2410,6 @@
                 "entrance": {
                     "name": "Ulaz / izlaz",
                     "terms": "vrata"
-                },
-                "entrance/main": {
-                    "name": "Glavni ulaz"
                 },
                 "ford": {
                     "name": "Gaz",
@@ -3081,16 +3028,6 @@
                 },
                 "man_made/works": {
                     "name": "Tvornica"
-                },
-                "marker": {
-                    "name": "Oznaka"
-                },
-                "marker/utility": {
-                    "name": "Oznaka infrastrukture",
-                    "terms": "trasirka,kontrolna cijev,lula"
-                },
-                "marker/utility/power": {
-                    "name": "Oznaka električne infrastrukture"
                 },
                 "military/bunker": {
                     "name": "Vojni bunker"

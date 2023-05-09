@@ -106,7 +106,6 @@
                 "access_simple": {
                     "label": "Sarrera baimendua",
                     "options": {
-                        "customers": "Bezeroentzat bakarrik",
                         "private": "Pribatua",
                         "unknown": "Ezezaguna",
                         "yes": "Publikoa"
@@ -121,11 +120,7 @@
                     }
                 },
                 "addr/interpolation": {
-                    "label": "Mota",
-                    "options": {
-                        "all": "Guztiak",
-                        "alphabetic": "Alfabetikoa"
-                    }
+                    "label": "Mota"
                 },
                 "address": {
                     "label": "Helbidea",
@@ -222,12 +217,6 @@
                 "animal_shelter": {
                     "label": "Animalientzako"
                 },
-                "archaeological_site": {
-                    "options": {
-                        "megalith": "Megalitoa",
-                        "tumulus": "Tumulua"
-                    }
-                },
                 "architect": {
                     "label": "Arkitektua",
                     "terms": "arkitektua,arkitetua,eraikin diseinatzailea"
@@ -289,17 +278,7 @@
                     }
                 },
                 "board_type": {
-                    "label": "Mota",
-                    "options": {
-                        "art": "Artea",
-                        "astronomy": "Astronomia",
-                        "geology": "Geologia",
-                        "history": "Historia",
-                        "nature": "Natura",
-                        "notice": "Ohar-taula",
-                        "plants": "Landareak",
-                        "welcome_sign": "Ongietorri seinalea"
-                    }
+                    "label": "Mota"
                 },
                 "bollard": {
                     "label": "Mota"
@@ -330,18 +309,7 @@
                     "label": "Mota"
                 },
                 "building": {
-                    "label": "Eraikin",
-                    "options": {
-                        "farm": "Baserria",
-                        "farm_auxiliary": "Baserri alboko eraikina",
-                        "fire_station": "Suhiltzaileen eraikina",
-                        "garage": "Garajea",
-                        "garages": "Garajeak",
-                        "house": "Etxea",
-                        "roof": "Teilatu-aterpea",
-                        "school": "Eskola-eraikina",
-                        "warehouse": "Biltegia"
-                    }
+                    "label": "Eraikin"
                 },
                 "bunker_type": {
                     "label": "Mota"
@@ -419,12 +387,7 @@
                     "label": "Estalita"
                 },
                 "craft": {
-                    "label": "Mota",
-                    "options": {
-                        "photographer": "Argazkilaria",
-                        "plumber": "Iturgina",
-                        "shoemaker": "Zapataria"
-                    }
+                    "label": "Mota"
                 },
                 "crane/type": {
                     "label": "Garabi mota",
@@ -434,17 +397,7 @@
                     }
                 },
                 "crop": {
-                    "label": "Laborantzak",
-                    "options": {
-                        "coffee": "Kafea",
-                        "grape": "Mahatsa",
-                        "maize": "Artoa",
-                        "potato": "Patatak",
-                        "rice": "Arroza",
-                        "tobacco": "Tabakoa",
-                        "vegetable": "Barazkiak",
-                        "wheat": "Garia"
-                    }
+                    "label": "Laborantzak"
                 },
                 "crossing": {
                     "label": "Mota"
@@ -609,10 +562,6 @@
                 "duration": {
                     "label": "Iraupen",
                     "placeholder": "00:00"
-                },
-                "ele": {
-                    "label": "Altitudea (Metroak)",
-                    "terms": "garaiera,altuera,altitude"
                 },
                 "electrified": {
                     "label": "Elektrifikazio",
@@ -796,7 +745,8 @@
                         "critical": "Muga: Bakarrik zaldizko eta zaldi esperimentatuak ibiltzeko modukoa. Oztopo nagusiak. Zubiek arretaz aztertuak izan behar dute.",
                         "dangerous": "Arriskutsua: Bakarrik oso zaldizko eta zaldi trebeek ibiltzeko modukoa eta soilik eguraldi ona egiten duenean. Desmuntatu.",
                         "demanding": "Kontuz ibili: bide malkartsua, noizean behin pasabide zailak.",
-                        "difficult": "Zaila: bide estu eta arriskutsua. Bidea estutzen eta zailtzen duten oztopoak egon daitezke."
+                        "difficult": "Zaila: bide estu eta arriskutsua. Bidea estutzen eta zailtzen duten oztopoak egon daitezke.",
+                        "impossible": "Zeharkaezina: Zaldiek igaro ezin duten bide edo zubia. Estuegia, euskarri nahikorik gabea, eskilarak bezalako oztopoekin. Hiltzeko arriskua."
                     },
                     "placeholder": "Zaila, Arriskutsua..."
                 },
@@ -995,9 +945,6 @@
                 },
                 "note": {
                     "label": "Ohar"
-                },
-                "nudism": {
-                    "label": "Nudismoa"
                 },
                 "office": {
                     "label": "Mota"
@@ -1996,9 +1943,6 @@
                     "name": "Arkitektura bulegoa",
                     "terms": "arkitekto bulegoa,arkitektura bulegoa"
                 },
-                "place/locality": {
-                    "name": "Aurkintza"
-                },
                 "shop/hairdresser": {
                     "name": "Ile-apaintzailea"
                 },
@@ -2010,12 +1954,6 @@
                 },
                 "shop/vacant": {
                     "name": "Denda-lokal hutsa"
-                },
-                "type/boundary": {
-                    "name": "Muga"
-                },
-                "waterway/waterfall": {
-                    "name": "Ur-jauzia"
                 }
             }
         }

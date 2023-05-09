@@ -8,7 +8,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.view.Transforms
 import de.westnordost.streetcomplete.view.ViewPropertyAnimatorsPlayer
@@ -24,6 +23,9 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
     /** View from which the title image view is animated from (and back on dismissal)*/
     private var sharedTitleView: View? = null
 
+    var isShowing: Boolean = false
+        private set
+
     private var animatorsPlayer: ViewPropertyAnimatorsPlayer? = null
 
     protected abstract val dialogAndBackgroundContainer: ViewGroup
@@ -32,18 +34,11 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
     protected abstract val dialogBubbleBackground: View
     protected abstract val titleView: View
 
-    private val backPressedCallback = object : OnBackPressedCallback(false) {
-        override fun handleOnBackPressed() {
-            dismiss()
-        }
-    }
-
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialogAndBackgroundContainer.setOnClickListener { dismiss() }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
     }
 
     override fun onDestroyView() {
@@ -56,14 +51,14 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
 
     open fun dismiss(): Boolean {
         if (animatorsPlayer != null) return false
-        backPressedCallback.isEnabled = false
+        isShowing = false
         animateOut(sharedTitleView)
         return true
     }
 
     protected fun show(sharedView: View): Boolean {
         if (animatorsPlayer != null) return false
-        backPressedCallback.isEnabled = true
+        isShowing = true
         this.sharedTitleView = sharedView
         animateIn(sharedView)
         return true

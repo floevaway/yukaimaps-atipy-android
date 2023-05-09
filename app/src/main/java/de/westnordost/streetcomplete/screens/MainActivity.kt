@@ -185,6 +185,8 @@ class MainActivity :
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
 
+        downloadController.showNotification = false
+        uploadController.showNotification = false
         uploadController.addUploadProgressListener(uploadProgressListener)
         downloadController.addDownloadProgressListener(downloadProgressListener)
 
@@ -192,10 +194,21 @@ class MainActivity :
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
     }
 
-    public override fun onResume() {
-        super.onResume()
-        downloadController.showNotification = false
-        uploadController.showNotification = false
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if (!forwardBackPressedToChildren()) super.onBackPressed()
+    }
+
+    private fun forwardBackPressedToChildren(): Boolean {
+        val messagesContainerFragment = messagesContainerFragment
+        if (messagesContainerFragment != null) {
+            if (messagesContainerFragment.onBackPressed()) return true
+        }
+        val mainFragment = mainFragment
+        if (mainFragment != null) {
+            if (mainFragment.onBackPressed()) return true
+        }
+        return false
     }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
@@ -216,12 +229,12 @@ class MainActivity :
             putLong(Prefs.MAP_LATITUDE, java.lang.Double.doubleToRawLongBits(pos.latitude))
             putLong(Prefs.MAP_LONGITUDE, java.lang.Double.doubleToRawLongBits(pos.longitude))
         }
-        downloadController.showNotification = true
-        uploadController.showNotification = true
     }
 
     public override fun onStop() {
         super.onStop()
+        downloadController.showNotification = true
+        uploadController.showNotification = true
         uploadController.removeUploadProgressListener(uploadProgressListener)
         downloadController.removeDownloadProgressListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)

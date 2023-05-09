@@ -87,7 +87,6 @@ class TangramIconsSpriteSheet(
         private const val ICONS_FILE = "icons.png"
         private val ICONS = listOf(
             R.drawable.ic_pin_choker_borderless,
-            R.drawable.ic_pin_island_borderless,
             R.drawable.ic_pin_parking_borderless
         )  + presetIconIndex.values
     }

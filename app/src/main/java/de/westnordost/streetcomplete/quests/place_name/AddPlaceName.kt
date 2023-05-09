@@ -39,9 +39,6 @@ class AddPlaceName(
                 "food_court", "nightclub",
                 "cinema", "planetarium", "casino",                                                  // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
-                "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
-                "dancing_school", "ski_school", "flight_school", "surf_school", "sailing_school",
-                "cooking_school",
                 "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace",         // commercial
                 "internet_cafe", "payment_centre",
                 "car_wash", "car_rental", "fuel",                                                   // car stuff
@@ -53,13 +50,12 @@ class AddPlaceName(
                 "boat_rental",
 
                 // name & wheelchair
-                "theatre",                                        // culture
-                "conference_centre", "arts_centre",               // events
-                "police", "ranger_station",                       // civic
-                "ferry_terminal",                                 // transport
-                "place_of_worship",                               // religious
-                "hospital",                                       // health care
-                "brothel", "gambling", "love_hotel", "stripclub", // bad stuff
+                "theatre",                             // culture
+                "conference_centre", "arts_centre",    // events
+                "police", "ranger_station",            // civic
+                "ferry_terminal",                      // transport
+                "place_of_worship",                    // religious
+                "hospital",                            // health care
 
                 // name only
                 "studio",                                                                // culture
@@ -68,6 +64,8 @@ class AddPlaceName(
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
                 "monastery",                                                             // religious
                 "kindergarten", "school", "college", "university", "research_institute", // education
+                "driving_school", "dive_centre", "language_school", "music_school",      // learning
+                "brothel", "gambling", "love_hotel", "stripclub"                         // bad stuff
             ),
             "tourism" to arrayOf(
                 // common

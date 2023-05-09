@@ -907,6 +907,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="about_title_faq">"FAQ"</string>
     <string name="quest_buildingLevels_title2">"Quanti piani sopra il seminterrato ha questo edificio?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Quanti piani sopra il seminterrato ha questa parte di edificio?"</string>
+    <string name="quest_crossing_title">"Ci sono cordoli dove questa via incontra la strada? Di che tipo?"</string>
     <string name="pref_subtitle_quests_preset_name">"Preimpostazione: %s"</string>
     <string name="default_disabled_msg_roofShape">"Questo tipo di missione è disabilitata perché la forma del tetto non è sempre facilmente visibile dalla strada. Questo tipo di missione è anche gravosa; nella maggior parte dei casi è più facile ed efficiente mappare queste informazioni usando le immagini satellitari da casa."</string>
     <string name="quest_religion_animist">"Animista"</string>
@@ -940,6 +941,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_buildingType_bridge">"Ponte tra edifici"</string>
     <string name="quest_laundrySelfService_title2">"Questa lavanderia ha il servizio self service?"</string>
     <string name="quest_dietType_explanation_halal">"I prodotti Halal devono essere preparati in osservanza di speciali regole, le agenzie di certificazione Halal marchiano i prodotti che le rispettano."</string>
+    <string name="quest_picnicTableCover_title">"Questo tavolo da picnic è coperto (riparato dalla pioggia)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Questi sono scalini"</string>
     <string name="quest_barrier_type_passage_conversion">"Convertito in un passaggio in un muro/barriera"</string>
     <string name="quest_barrier_type_gate_conversion">"Convertito in cancello"</string>
@@ -955,6 +957,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_surface_value_concrete_plates">"Lastre di cemento"</string>
     <string name="quest_surface_value_concrete_lanes">"Linee in cemento"</string>
     <string name="quest_fireHydrant_diameter_title">"Qual è il diametro indicato sulla targa dell'idrante?"</string>
+    <string name="quest_fireHydrant_confirmation_title">"Sei Sicuro? Delle volte il diametro può essere trovato sull'idrante stesso."</string>
     <string name="quest_diet_answer_no_food">"Non ha alcun cibo"</string>
     <string name="short_no_answer_on_button">"No"</string>
     <string name="restore_confirmation">"Ripristina"</string>
@@ -1208,7 +1211,7 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="quest_camp_type_tents_only">"Solo tende"</string>
     <string name="quest_camp_type_backcountry">"Campeggio fuoripista (niente strutture)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Questo diametro non sembra plausibile, è solitamente tra %1$d e %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Questa risposta non concorda con ciò che è già mappato di questa strada. Sei sicuro che stai rispondendo relativamente alla strada corretta? Sei sicuro di aver controllato personalmente lungo l'intera lunghezza, come sempre necessario?"</string>
+    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Questa risposta non concorda con ciò che è già mappato di questa strada. Sei sicuro che stai rispondendo relativamente alla strada corretta? Sei sicuro di aver misurato personalmente lungo l'intera lunghezza, come sempre necessario?"</string>
     <string name="quest_recycling_type_pet">"Solo PET"</string>
     <string name="street_parking_street_width">"Larghezza strada: %s"</string>
     <string name="overlay_street_parking">"Parcheggio in strada"</string>
@@ -1235,6 +1238,7 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="overlay_addresses">"Indirizzi"</string>
     <string name="overlay_shops">"Negozi"</string>
     <string name="name_label">"Nome:"</string>
+    <string name="vacant_shop_title">"Negozio vuoto"</string>
     <string name="unknown_shop_title">"Tipo di luogo sconosciuto"</string>
     <string name="quest_address_answer_no_address">"Nessun indirizzo qui"</string>
     <string name="quest_bicycle_barrier_installation_title">"Questa barriera può essere aperta (eventualmente con una chiave)?"</string>
@@ -1303,13 +1307,4 @@ Spostarlo ora?"</string>
     <string name="street_parking_staggered_on_street">"Sulla strada su lati alterni"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parzialmente sulla strada su lati alterni"</string>
     <string name="quest_traffic_signals_sound_description">"Consiglio: cerca degli altoparlanti. Non tutti i segnali sonori sono attivabili tramite pulsante."</string>
-    <string name="quest_presets_duplicate">"Duplicato"</string>
-    <string name="label_block">"isolato"</string>
-    <string name="quest_address_answer_block">"È in un isolato..."</string>
-    <string name="quest_address_answer_no_block">"Non è in un isolato..."</string>
-    <string name="quest_surface_value_mud">"Fango persistente"</string>
-    <string name="quest_wheelchairAccessPat_noToilet">"Non c'è un bagno qui"</string>
-    <string name="unknown_surface_title">"Altri tipi di supeficie"</string>
-    <string name="overlay_surface">"Superfici"</string>
-    <string name="overlay_path_surface_segregated">"Dividi in parti ciclabili e pedonali"</string>
 </resources>

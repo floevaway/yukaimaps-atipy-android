@@ -3,9 +3,7 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
@@ -87,14 +85,14 @@ class AddCyclewayPartSurfaceTest {
 
     @Test fun `apply asphalt surface`() {
         questType.verifyAnswer(
-            SurfaceAndNote(Surface.ASPHALT),
+            SurfaceAnswer(Surface.ASPHALT),
             StringMapEntryAdd("cycleway:surface", "asphalt")
         )
     }
 
     @Test fun `apply generic surface`() {
         questType.verifyAnswer(
-            SurfaceAndNote(Surface.UNPAVED, "note"),
+            SurfaceAnswer(Surface.UNPAVED_ROAD, "note"),
             StringMapEntryAdd("cycleway:surface", "unpaved"),
             StringMapEntryAdd("cycleway:surface:note", "note")
         )
@@ -103,7 +101,7 @@ class AddCyclewayPartSurfaceTest {
     @Test fun `updates check_date`() {
         questType.verifyAnswer(
             mapOf("cycleway:surface" to "asphalt", "check_date:cycleway:surface" to "2000-10-10"),
-            SurfaceAndNote(Surface.ASPHALT),
+            SurfaceAnswer(Surface.ASPHALT),
             StringMapEntryModify("cycleway:surface", "asphalt", "asphalt"),
             StringMapEntryModify("check_date:cycleway:surface", "2000-10-10", nowAsCheckDateString()),
         )
@@ -116,7 +114,7 @@ class AddCyclewayPartSurfaceTest {
                 "cycleway:surface" to "asphalt",
                 "cycleway:smoothness" to "intermediate"
             ),
-            SurfaceAndNote(Surface.PAVING_STONES),
+            SurfaceAnswer(Surface.PAVING_STONES),
             StringMapEntryDelete("cycleway:smoothness", "intermediate"),
             StringMapEntryModify("cycleway:surface", "asphalt", "paving_stones")
         )
@@ -129,7 +127,7 @@ class AddCyclewayPartSurfaceTest {
                 "surface" to "paving_stones",
                 "smoothness" to "good"
             ),
-            SurfaceAndNote(Surface.PAVING_STONES),
+            SurfaceAnswer(Surface.PAVING_STONES),
             StringMapEntryAdd("cycleway:surface", "paving_stones"),
             StringMapEntryModify("surface", "paving_stones", "paving_stones"),
             StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
@@ -139,7 +137,7 @@ class AddCyclewayPartSurfaceTest {
     @Test fun `cycleway surface changes`() {
         questType.verifyAnswer(
             mapOf("cycleway:surface" to "asphalt"),
-            SurfaceAndNote(Surface.CONCRETE),
+            SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("cycleway:surface", "asphalt", "concrete"),
         )
     }
@@ -151,7 +149,7 @@ class AddCyclewayPartSurfaceTest {
                 "cycleway:surface" to "paving_stones",
                 "footway:surface" to "concrete",
             ),
-            SurfaceAndNote(Surface.CONCRETE),
+            SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("cycleway:surface", "paving_stones", "concrete"),
             StringMapEntryModify("surface", "paving_stones", "concrete")
         )
@@ -163,7 +161,7 @@ class AddCyclewayPartSurfaceTest {
                 "cycleway:surface" to "paving_stones",
                 "footway:surface" to "concrete",
             ),
-            SurfaceAndNote(Surface.CONCRETE),
+            SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("cycleway:surface", "paving_stones", "concrete"),
             StringMapEntryAdd("surface", "concrete")
         )
@@ -176,7 +174,7 @@ class AddCyclewayPartSurfaceTest {
                 "cycleway:surface" to "paving_stones",
                 "footway:surface" to "asphalt",
             ),
-            SurfaceAndNote(Surface.CONCRETE),
+            SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("cycleway:surface", "paving_stones", "concrete"),
             StringMapEntryModify("surface", "paving_stones", "paved")
         )
@@ -189,7 +187,7 @@ class AddCyclewayPartSurfaceTest {
                 "cycleway:surface" to "paving_stones",
                 "footway:surface" to "gravel",
             ),
-            SurfaceAndNote(Surface.CONCRETE),
+            SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("cycleway:surface", "paving_stones", "concrete"),
             StringMapEntryDelete("surface", "paving_stones")
         )
@@ -200,7 +198,7 @@ class AddCyclewayPartSurfaceTest {
             mapOf(
                 "surface" to "asphalt",
             ),
-            SurfaceAndNote(Surface.CONCRETE),
+            SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryAdd("cycleway:surface", "concrete")
         )
     }
@@ -211,7 +209,7 @@ class AddCyclewayPartSurfaceTest {
                 "surface" to "asphalt",
                 "cycleway:surface" to "paving_stones",
             ),
-            SurfaceAndNote(Surface.CONCRETE),
+            SurfaceAnswer(Surface.CONCRETE),
             StringMapEntryModify("cycleway:surface", "paving_stones", "concrete")
         )
     }

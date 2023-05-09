@@ -895,6 +895,7 @@
     <string name="about_title_faq">"ЧЗВ"</string>
     <string name="quest_buildingLevels_title2">"Колко етажа над мазето има тази сграда?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Колко етажа над мазето има тази част от сградата?"</string>
+    <string name="quest_crossing_title">"Има ли бордюр на мястото къде този път се среща с улицата? Какъв вид?"</string>
     <string name="pref_subtitle_quests_preset_name">"Настройка: %s"</string>
     <string name="default_disabled_msg_roofShape">"Тази задача е изключена по подразбиране, защото формата на покривите не е лесно видима от улицата и отнема много време. В повечето случаи е по-лесно и по-ефективно да се използват сателитни изображения."</string>
     <string name="quest_religion_animist">"Анимизъм"</string>
@@ -928,6 +929,7 @@
     <string name="quest_buildingType_bridge">"Мост между сгради (топла връзка)"</string>
     <string name="quest_laundrySelfService_title2">"Тази пералня работи ли на самообслужване?"</string>
     <string name="quest_dietType_explanation_halal">"Халал продуктите трябва да се приготвят в съответствие със специални правила и да са маркирани от сертифицирани организации."</string>
+    <string name="quest_picnicTableCover_title">"Тази пикник маса покрита ли е (защитена ли е от дъжд)?"</string>
     <string name="quest_generic_answer_is_actually_steps">"Това са стълби"</string>
     <string name="quest_barrier_type_passage_conversion">"Превърнато в проход в стена/ограда/друго"</string>
     <string name="quest_barrier_type_gate_conversion">"Превърнато в портал"</string>
@@ -943,6 +945,7 @@
     <string name="quest_surface_value_concrete_plates">"Бетонни плочи"</string>
     <string name="quest_surface_value_concrete_lanes">"Бетонни ленти"</string>
     <string name="quest_fireHydrant_diameter_title">"Какъв диаметър е посочен на знака на пожарния хидрант?"</string>
+    <string name="quest_fireHydrant_confirmation_title">"Сигурни ли сте? Твърде често диаметърът е посочен на самия хидрант."</string>
     <string name="quest_diet_answer_no_food">"Без храна"</string>
     <string name="short_no_answer_on_button">"Не"</string>
     <string name="restore_confirmation">"Възстанови"</string>
@@ -1223,6 +1226,7 @@
     <string name="overlay_addresses">"Адреси"</string>
     <string name="overlay_shops">"Магазини"</string>
     <string name="name_label">"Име:"</string>
+    <string name="vacant_shop_title">"Свободен магазин"</string>
     <string name="unknown_shop_title">"Друг вид място"</string>
     <string name="quest_address_answer_no_address">"Тук няма адрес"</string>
     <string name="quest_bicycle_barrier_installation_title">"Може ли тази бариера за велосипеди да се отвори (с или без ключ)?"</string>
@@ -1291,13 +1295,4 @@
     <string name="street_parking_staggered_on_street">"На улицата от редуващи се страни"</string>
     <string name="street_parking_staggered_half_on_kerb">"Частично на улицата, редуващи се страни"</string>
     <string name="quest_traffic_signals_sound_description">"Съвет: Огледайте се за високоговорители. Не всички звукови сигнали се задействат чрез бутон."</string>
-    <string name="quest_presets_duplicate">"Дубликат"</string>
-    <string name="label_block">"квартал (блок)"</string>
-    <string name="quest_address_answer_block">"Вътре в квартала"</string>
-    <string name="quest_address_answer_no_block">"Извън квартала"</string>
-    <string name="quest_surface_value_mud">"Постоянна кал"</string>
-    <string name="quest_wheelchairAccessPat_noToilet">"Тук няма тоалетни"</string>
-    <string name="unknown_surface_title">"Друга повърхност"</string>
-    <string name="overlay_surface">"Повърхности"</string>
-    <string name="overlay_path_surface_segregated">"Разделяне на велоалея и пешеходна алея"</string>
 </resources>

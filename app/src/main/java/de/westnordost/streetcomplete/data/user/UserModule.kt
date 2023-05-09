@@ -6,8 +6,12 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider
+import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.osm.OsmOIDCConnection
 
-private const val BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/"
+private const val apiRoot = BuildConfig.API_ROOT
+
+private const val BASE_OAUTH_URL = "$apiRoot/oauth/"
 private const val CONSUMER_KEY = "NV4cEoqQ94Kuoowh8qGJvUJLnbts40WiNykyeC1T"
 private const val CONSUMER_SECRET = "r68v1Bd7RewTixAp0dMdCwn3w5iQvmpk4HlJcH2y"
 private const val CALLBACK_SCHEME = "streetcomplete"
@@ -23,6 +27,7 @@ val userModule = module {
         BASE_OAUTH_URL + "authorize"
     ) }
     factory { OAuthStore(get()) }
+    factory { OIDCStore(get()) }
 
     single<UserDataSource> { get<UserDataController>() }
     single { UserDataController(get(), get()) }

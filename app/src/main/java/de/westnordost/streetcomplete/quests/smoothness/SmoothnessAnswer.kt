@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -26,7 +25,9 @@ fun SmoothnessAnswer.applyTo(tags: Tags) {
             tags.removeCheckDatesForKey("smoothness")
         }
         is IsActuallyStepsAnswer -> {
-            tags.changeToSteps()
+            tags["highway"] = "steps"
+            tags.remove("smoothness")
+            tags.removeCheckDatesForKey("smoothness")
         }
     }
 }

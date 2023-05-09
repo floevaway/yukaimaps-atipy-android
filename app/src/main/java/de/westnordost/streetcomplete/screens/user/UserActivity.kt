@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.screens.user
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.widget.Toolbar
+import android.content.Intent
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.screens.FragmentContainerActivity
-import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsFragment
 import de.westnordost.streetcomplete.screens.user.login.LoginFragment
@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.screens.user.statistics.EditStatisticsFragm
 import de.westnordost.streetcomplete.screens.user.statistics.EditTypeInfoFragment
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+
 
 /** Shows all the user information, login etc.
  *  This activity coordinates quite a number of fragments, which all call back to this one. In order
@@ -45,52 +46,54 @@ class UserActivity :
         supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
 
     private val loginStatusListener = object : UserLoginStatusSource.Listener {
-        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragmentAnimated(UserFragment()) } }
-        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragmentAnimated(LoginFragment()) } }
+        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragment(UserFragment()) } }
+        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragment(LoginFragment()) } }
     }
 
-    private val fragmentLifecycleCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
-        override fun onFragmentStarted(fragmentManager: FragmentManager, fragment: Fragment) {
-            if (fragment.id == R.id.fragment_container && fragment is HasTitle) {
-                title = fragment.title
-                supportActionBar?.subtitle = fragment.subtitle
-            }
-        }
-    }
 
     /* --------------------------------------- Lifecycle --------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            replaceMainFragment(when {
+            mainFragment = when {
                 intent.getBooleanExtra(EXTRA_LAUNCH_AUTH, false) -> LoginFragment.create(true)
                 userLoginStatusSource.isLoggedIn -> UserFragment()
                 else -> LoginFragment.create()
-            })
+            }
         }
         userLoginStatusSource.addListener(loginStatusListener)
-
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        if (toolbar != null) {
-            setSupportActionBar(toolbar)
-            supportActionBar!!.setDisplayShowHomeEnabled(true)
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        }
-
-        supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, false)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == android.R.id.home) {
-            finish()
-            return true
-        } else super.onOptionsItemSelected(item)
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val countryDetailsFragment = countryDetailsFragment
+        if (countryDetailsFragment != null && countryDetailsFragment.isShowing) {
+            countryDetailsFragment.dismiss()
+            return
+        }
+        val editTypeDetailsFragment = editTypeDetailsFragment
+        if (editTypeDetailsFragment != null && editTypeDetailsFragment.isShowing) {
+            editTypeDetailsFragment.dismiss()
+            return
+        }
+        val achievementDetailsFragment = achievementDetailsFragment
+        if (achievementDetailsFragment != null && achievementDetailsFragment.isShowing) {
+            achievementDetailsFragment.dismiss()
+            return
+        }
+        super.onBackPressed()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         userLoginStatusSource.removeListener(loginStatusListener)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.i("UserActivity", "YUKAIMAPS Result useractivity called")
+        mainFragment?.onActivityResult(requestCode, resultCode, data)
     }
 
     /* ---------------------------- AchievementsFragment.Listener ------------------------------- */
@@ -111,12 +114,14 @@ class UserActivity :
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun replaceMainFragmentAnimated(fragment: Fragment) {
-        replaceMainFragment(fragment) {
+    private fun replaceMainFragment(fragment: Fragment) {
+        supportFragmentManager.popBackStack("main", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        supportFragmentManager.commit {
             setCustomAnimations(
                 R.anim.fade_in_from_bottom, R.anim.fade_out_to_top,
                 R.anim.fade_in_from_bottom, R.anim.fade_out_to_top
             )
+            replace(R.id.fragment_container, fragment)
         }
     }
 

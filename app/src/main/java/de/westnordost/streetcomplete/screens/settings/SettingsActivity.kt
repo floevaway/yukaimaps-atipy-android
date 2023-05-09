@@ -4,14 +4,27 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import de.westnordost.streetcomplete.screens.FragmentContainerActivity
+import de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsFragment
+import de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionFragment
 
-class SettingsActivity : FragmentContainerActivity() {
-
+class SettingsActivity : FragmentContainerActivity(), SettingsFragment.Listener {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            replaceMainFragment(TwoPaneSettingsFragment())
+            mainFragment = SettingsFragment()
         }
+        val launchQuestSettings = intent.getBooleanExtra(EXTRA_LAUNCH_QUEST_SETTINGS, false)
+        if (launchQuestSettings) {
+            pushMainFragment(QuestSelectionFragment())
+        }
+    }
+
+    override fun onClickedQuestSelection() {
+        pushMainFragment(QuestSelectionFragment())
+    }
+
+    override fun onClickedQuestPresets() {
+        pushMainFragment(QuestPresetsFragment())
     }
 
     companion object {
@@ -20,6 +33,6 @@ class SettingsActivity : FragmentContainerActivity() {
                 putExtra(EXTRA_LAUNCH_QUEST_SETTINGS, true)
             }
 
-        const val EXTRA_LAUNCH_QUEST_SETTINGS = "launch_quest_settings"
+        private const val EXTRA_LAUNCH_QUEST_SETTINGS = "launch_quest_settings"
     }
 }

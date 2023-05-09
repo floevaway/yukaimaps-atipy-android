@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
     private val filter by lazy { """
-        nodes, ways with
+        nodes with
           amenity = recycling
           and recycling_type = container
           and access !~ private|no

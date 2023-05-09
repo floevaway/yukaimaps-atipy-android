@@ -162,8 +162,7 @@
                     "aliases": "Petrol Station"
                 },
                 "amenity/parking": {
-                    "name": "Car Park",
-                    "aliases": "Parking Lot"
+                    "name": "Car Park"
                 },
                 "amenity/parking/multi-storey": {
                     "name": "Multistorey Car Park"
@@ -173,7 +172,7 @@
                     "aliases": "Commuter Car Park"
                 },
                 "amenity/parking_entrance": {
-                    "name": "Car Park Building Entrance / Exit"
+                    "name": "Carpark Building Entrance / Exit"
                 },
                 "amenity/payment_centre": {
                     "name": "Payment Centre"
@@ -276,11 +275,6 @@
                 "highway/street_lamp": {
                     "name": "Street Light",
                     "terms": "streetlamp,street lamp,lamp,light,gaslight"
-                },
-                "highway/track": {
-                    "name": "Track / Land-Access Road",
-                    "terms": "fire trail",
-                    "aliases": "Fire Trail"
                 },
                 "highway/traffic_signals": {
                     "name": "Traffic Lights"

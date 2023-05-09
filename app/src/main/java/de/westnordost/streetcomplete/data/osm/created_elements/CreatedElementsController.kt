@@ -23,8 +23,9 @@ class CreatedElementsController(
 
     fun deleteAll(entries: Collection<ElementKey>) {
         synchronized(this) {
-            db.deleteAll(entries)
+            val result = db.deleteAll(entries)
             cache.removeAll(entries.toSet())
+            return result
         }
     }
 

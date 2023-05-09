@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.screens.user.login
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import android.content.Intent
+import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -17,34 +19,46 @@ import de.westnordost.streetcomplete.data.osmConnection
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.databinding.FragmentLoginBinding
+import de.westnordost.streetcomplete.screens.BackPressedListener
 import de.westnordost.streetcomplete.screens.HasTitle
+import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.data.user.OIDCDanser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import oauth.signpost.OAuthConsumer
 import org.koin.android.ext.android.inject
 
+import net.openid.appauth.AuthorizationResponse;
+import net.openid.appauth.TokenResponse;
+import net.openid.appauth.AuthorizationException;
+
 /** Shows only a login button and a text that clarifies that login is necessary for publishing the
  *  answers. */
 class LoginFragment :
     Fragment(R.layout.fragment_login),
     HasTitle,
-    OAuthFragment.Listener {
+    BackPressedListener {
 
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val userUpdater: UserUpdater by inject()
+    private val danser = OIDCDanser()
 
     override val title: String get() = getString(R.string.user_login)
 
     private val binding by viewBinding(FragmentLoginBinding::bind)
 
+    private val oidcFragment: OIDCFragment? get() =
+        childFragmentManagerOrNull?.findFragmentById(R.id.oauthFragmentContainer) as? OIDCFragment
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.loginButton.setOnClickListener { pushOAuthFragment() }
+        danser.configure()
 
         val launchAuth = arguments?.getBoolean(ARG_LAUNCH_AUTH, false) ?: false
         if (launchAuth) {
@@ -62,15 +76,53 @@ class LoginFragment :
         }
     }
 
-    /* ------------------------------- OAuthFragment.Listener ----------------------------------- */
+    override fun onBackPressed(): Boolean {
+        val f = oidcFragment
+        if (f != null) {
+            if (f.onBackPressed()) return true
+            childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
+            return true
+        }
+        return false
+    }
 
-    override fun onOAuthSuccess(consumer: OAuthConsumer) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100) {
+            if (data != null) {
+                val resp = AuthorizationResponse.fromIntent(data);
+                val ex = AuthorizationException.fromIntent(data);
+                if (resp != null) {
+                    onOIDCStarted(resp, ex)
+                } else {
+                    onOIDCFailed(ex)
+                }
+            }
+        }
+    }
+
+
+    fun onOIDCStarted(resp: AuthorizationResponse?, ex: AuthorizationException?) {
+        binding.loginButton.visibility = View.INVISIBLE
+        binding.loginProgress.visibility = View.VISIBLE
+        childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
+        userLoginStatusController.startLogin(resp, ex)
+        danser.exchangeToken(
+            resp!!,
+            {tokenresp: TokenResponse?, tokenex: AuthorizationException? ->
+                onOIDCSuccess(tokenresp, tokenex)
+            }
+        )
+    }
+
+
+    fun onOIDCSuccess(resp: TokenResponse?, ex: AuthorizationException?) {
         binding.loginButton.visibility = View.INVISIBLE
         binding.loginProgress.visibility = View.VISIBLE
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
         viewLifecycleScope.launch {
-            if (hasRequiredPermissions(consumer)) {
-                userLoginStatusController.logIn(consumer)
+            if (hasRequiredPermissions()) {
+                userLoginStatusController.loggedIn(resp, ex)
                 userUpdater.update()
             } else {
                 context?.toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
@@ -80,12 +132,14 @@ class LoginFragment :
         }
     }
 
-    override fun onOAuthFailed(e: Exception?) {
+    fun onOIDCFailed(e: Exception?) {
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
         userLoginStatusController.logOut()
     }
 
-    private suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
+    private suspend fun hasRequiredPermissions(): Boolean {
+        return true;
+        /*
         return withContext(Dispatchers.IO) {
             try {
                 /* we didn't save the new OAuthConsumer yet but we want to make an API call with it
@@ -96,6 +150,7 @@ class LoginFragment :
                 permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
             } catch (e: Exception) { false }
         }
+        */
     }
 
     /* ------------------------------------------------------------------------------------------ */
@@ -106,7 +161,10 @@ class LoginFragment :
                 R.anim.enter_from_end, R.anim.exit_to_start,
                 R.anim.enter_from_start, R.anim.exit_to_end
             )
-            replace<OAuthFragment>(R.id.oauthFragmentContainer)
+            val frag = OIDCFragment()
+            frag.danser = danser
+            replace(R.id.oauthFragmentContainer, frag)
+
             addToBackStack("oauth")
         }
     }

@@ -8,7 +8,7 @@ import org.junit.Test
 
 class LastPickedValuesStoreTest {
 
-    @Test fun `mostCommonWithin basic functionality`() {
+    @Test fun `mostCommonWithin`() {
         assertEquals(
             "Returns the most common items",
             listOf(A, C),

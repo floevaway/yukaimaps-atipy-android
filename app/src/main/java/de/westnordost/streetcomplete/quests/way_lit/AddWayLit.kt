@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.lit.applyTo
 
 class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
@@ -26,7 +25,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
           or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
           (
             sidewalk ~ both|left|right|yes|separate
-            or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(urban|.*zone.*|nsl_restricted)"
+            or ~${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")} ~ .*urban|.*zone.*
             or maxspeed <= 60
           )
           or highway ~ ${LIT_WAYS.joinToString("|")}
@@ -55,7 +54,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
     override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is IsActuallyStepsAnswer -> tags.changeToSteps()
+            is IsActuallyStepsAnswer -> tags["highway"] = "steps"
             is WayLit -> answer.litStatus.applyTo(tags)
         }
     }

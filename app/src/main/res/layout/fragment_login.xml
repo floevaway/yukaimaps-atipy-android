@@ -41,7 +41,7 @@
 
     </RelativeLayout>
 
-    <androidx.fragment.app.FragmentContainerView
+    <FrameLayout
         android:id="@+id/oauthFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

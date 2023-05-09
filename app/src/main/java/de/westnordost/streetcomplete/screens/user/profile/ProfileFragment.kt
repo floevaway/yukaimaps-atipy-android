@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.util.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.LaurelWreathDrawable
+import de.westnordost.streetcomplete.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -46,6 +47,8 @@ import java.io.File
 import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
+
+private const val apiRoot = BuildConfig.API_ROOT
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -122,7 +125,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             userLoginStatusController.logOut()
         }
         binding.profileButton.setOnClickListener {
-            openUrl("https://www.openstreetmap.org/user/" + userDataSource.userName)
+            openUrl("$apiRoot/user/" + userDataSource.userName)
         }
     }
 

@@ -35,9 +35,10 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5300
-        versionName = "53.0-beta1"
+        versionCode = 5102
+        versionName = "51.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders["appAuthRedirectScheme"] = "org.yukaimaps"
     }
 
     buildTypes {
@@ -46,6 +47,16 @@ android {
             isShrinkResources = false
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+
+            var apiRoot: String = System.getenv("API_ROOT") ?: "https://dev.yukaimaps.someware.fr"
+            var oidcServer: String = System.getenv("OIDC_SERVER") ?: "https://dev.yukaimap.someware.fr/auth/realms/yukaimaps"
+            var clientId : String = System.getenv("OAUTH_CLIENT_ID") ?: "dev.yukaimap.someware.fr"
+            var insecure: Boolean = (System.getenv("OIDC_INSECURE") ?: "false").toBoolean()
+
+            buildConfigField("String", "API_ROOT", "\"$apiRoot\"")
+            buildConfigField("String", "OIDC_SERVER", "\"$oidcServer\"")
+            buildConfigField("String", "OAUTH_CLIENT_ID", "\"$clientId\"")
+            buildConfigField("Boolean", "OIDC_INSECURE", "$insecure")
         }
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
@@ -111,7 +122,7 @@ dependencies {
     val kotlinxCoroutinesVersion = "1.6.4"
     val koinVersion = "3.2.3"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.2")
 
     // tests
     testImplementation("junit:junit:4.13.2")
@@ -130,13 +141,13 @@ dependencies {
 
     // Android stuff
     implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.core:core-ktx:1.10.0")
+    implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.6.0")
-    implementation("androidx.fragment:fragment-ktx:1.5.7")
+    implementation("androidx.fragment:fragment-ktx:1.5.5")
     implementation("androidx.preference:preference-ktx:1.2.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
@@ -155,7 +166,7 @@ dependencies {
     implementation("androidx.work:work-runtime:2.7.1")
 
     // finding in which country we are for country-specific logic
-    implementation("de.westnordost:countryboundaries:2.1")
+    implementation("de.westnordost:countryboundaries:1.6")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:5.2")
     // talking with the OSM API
@@ -166,6 +177,9 @@ dependencies {
     implementation("de.westnordost:osmapi-user:2.0")
     implementation("com.squareup.okhttp3:okhttp:3.14.9")
     implementation("se.akerfeldt:okhttp-signpost:1.1.0")
+
+    //oidc
+    implementation("net.openid:appauth:0.11.1")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
@@ -179,7 +193,7 @@ dependencies {
     implementation("com.google.zxing:core:3.5.0")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
     implementation("com.charleskorn.kaml:kaml:0.48.0")
 
     // map and location
@@ -194,7 +208,7 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
-    "am", "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
+    "am", "ar", "ast", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
@@ -202,9 +216,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20230501"
+val nsiVersion = "v6.0.20230220"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.1.0"
+val presetsVersion = "v5.2.1"
 
 val poEditorProjectId = "97843"
 

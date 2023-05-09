@@ -17,7 +17,7 @@ class SceneMapComponent(
     private val ctrl: KtMapController,
     private val vectorTileProvider: VectorTileProvider
 ) {
-    private var sceneUpdates: MutableList<List<Pair<String, String>>> = mutableListOf()
+    private var sceneUpdates: MutableSet<List<Pair<String, String>>> = mutableSetOf()
 
     private var loadedSceneFilePath: String? = null
     private var loadedSceneUpdates: List<String>? = null
@@ -41,8 +41,7 @@ class SceneMapComponent(
 
     /** Remove the given scene updates */
     fun removeSceneUpdates(updates: List<Pair<String, String>>) {
-        val idx = sceneUpdates.indexOfLast { updates == it }
-        if (idx != -1) sceneUpdates.removeAt(idx)
+        sceneUpdates.remove(updates)
     }
 
     /** (Re)load the scene.

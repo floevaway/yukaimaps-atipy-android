@@ -184,9 +184,6 @@
                 "admin_level": {
                     "label": "Bestuurlijk niveau"
                 },
-                "advertising": {
-                    "label": "Type"
-                },
                 "aerialway": {
                     "label": "Type"
                 },
@@ -291,31 +288,6 @@
                 "ascent": {
                     "label": "Totale afdaling",
                     "terms": "stijging,klim"
-                },
-                "athletics_pitch": {
-                    "label": "Onderdeel",
-                    "options": {
-                        "discus_throw": "Discuswerpen",
-                        "hammer_throw": "Kogelslingeren",
-                        "high_jump": "Hoogspringen",
-                        "javelin_throw": "Speerwerpen",
-                        "long_jump": "Verspringen",
-                        "pole_vault": "Polsstokhoogspringen",
-                        "shot_put": "Kogelstoten",
-                        "triple_jump": "Hink-stap-sprong"
-                    }
-                },
-                "athletics_track": {
-                    "label": "Onderdeel",
-                    "options": {
-                        "javelin_throw": "Speerwerpen",
-                        "long_jump": "Verspringen",
-                        "pole_vault": "Polsstokhoogspringen",
-                        "running": "Hardlopen",
-                        "sprint": "Sprinten",
-                        "steeplechase": "Steeplechase\nHindernisloop",
-                        "triple_jump": "Hink-stap-sprong"
-                    }
                 },
                 "atm": {
                     "label": "Geldautomaat"
@@ -542,27 +514,6 @@
                 },
                 "building": {
                     "label": "Gebouw",
-                    "options": {
-                        "apartments": "Appartementencomplex",
-                        "barn": "Schuur",
-                        "bungalow": "Bungalow",
-                        "bunker": "Bunker",
-                        "cabin": "Blokhut",
-                        "carport": "Carport",
-                        "cowshed": "Koeienstal",
-                        "detached": "Alleenstaand huis",
-                        "farm": "Boerderijhuis",
-                        "garage": "Garage",
-                        "garages": "Garages",
-                        "greenhouse": "Broeikas",
-                        "house": "Huis",
-                        "houseboat": "Woonboot",
-                        "hut": "Hut",
-                        "roof": "Dak",
-                        "shed": "Schuurtje",
-                        "stable": "Stal",
-                        "sty": "Varkensstal"
-                    },
                     "terms": "gebouw,structuur"
                 },
                 "building/flats": {
@@ -670,7 +621,7 @@
                         "fortress": "Vesting",
                         "hillfort": "Heuvelfort",
                         "kremlin": "Kremlin",
-                        "manor": "Landhuis",
+                        "manor": "Landhuis\nHavezate",
                         "palace": "Paleis",
                         "shiro": "Japans kasteel\nShiro",
                         "stately": "Statig huis"
@@ -699,17 +650,6 @@
                 },
                 "clothes": {
                     "label": "Kleding",
-                    "options": {
-                        "babies": "Babykleding",
-                        "children": "Kinderkleding",
-                        "hats": "Hoeden",
-                        "maternity": "Zwangerschapskleding",
-                        "oversize": "Grote maten kleding",
-                        "socks": "Sokken",
-                        "sports": "Sportkleding",
-                        "suits": "Pakken",
-                        "swimwear": "Badkleding"
-                    },
                     "terms": "kleding,kleren,broek,jas,shirt"
                 },
                 "club": {
@@ -1006,9 +946,6 @@
                 "dance/style": {
                     "label": "Dansstijlen"
                 },
-                "dance/teaching": {
-                    "label": "Biedt danslessen aan"
-                },
                 "date": {
                     "label": "Datum"
                 },
@@ -1037,9 +974,6 @@
                 },
                 "deposit/trolley": {
                     "label": "Borg"
-                },
-                "depot": {
-                    "label": "Type"
                 },
                 "depth": {
                     "label": "Diepte (in meters)"
@@ -1317,34 +1251,6 @@
                         "wall": "Muur"
                     }
                 },
-                "fire_mains": {
-                    "label": "Type netwerk",
-                    "options": {
-                        "dry": "Specifiek netwerk (normaalgesproken droog)",
-                        "no": "Nee",
-                        "wet": "Aangesloten op de hoofdleiding (permanent gevuld)",
-                        "yes": "Onbekend"
-                    }
-                },
-                "fire_service_inlet": {
-                    "label": "Vorm",
-                    "options": {
-                        "pillar": "Pilaar/Bovengronds",
-                        "pipe": "Afgesloten pijp",
-                        "underground": "Ondergronds",
-                        "wall": "Muur"
-                    }
-                },
-                "fire_sprinkler": {
-                    "label": "Toevoer van de sprinklerinstallatie",
-                    "options": {
-                        "dry": "Specifiek netwerk (normaalgesproken droog)",
-                        "no": "Nee",
-                        "pre-action": "Aangesloten op de hoofdleiding (pre-action systeem)",
-                        "wet": "Aangesloten op de hoofdleiding (permanent gevuld)",
-                        "yes": "Onbekend"
-                    }
-                },
                 "fireplace": {
                     "label": "Haard"
                 },
@@ -1610,33 +1516,7 @@
                     }
                 },
                 "historic": {
-                    "label": "Type",
-                    "options": {
-                        "archaeological_site": "Archeologische opgraving",
-                        "bomb_crater": "Bomkrater",
-                        "boundary_stone": "Historische grenspaal",
-                        "building": "Historisch gebouw",
-                        "castle": "Kasteel",
-                        "charcoal_pile": "Meiler",
-                        "church": "Historische kerk",
-                        "city_gate": "Stadspoort",
-                        "citywalls": "Stadsmuur",
-                        "fort": "Historisch fort",
-                        "manor": "Landhuis",
-                        "memorial": "Gedenkteken",
-                        "milestone": "Mijlpaal",
-                        "mine": "Mijn",
-                        "mine_shaft": "Mijnschacht",
-                        "monument": "Monument",
-                        "pillory": "Historische schandpaal",
-                        "railway": "Spoorweg",
-                        "ruins": "Ruïne",
-                        "shieling": "Shieling",
-                        "tomb": "Tombe",
-                        "wayside_cross": "Wegkruis",
-                        "wayside_shrine": "Wegschrijn",
-                        "wreck": "Scheepswrak"
-                    }
+                    "label": "Type"
                 },
                 "historic/civilization": {
                     "label": "Historische beschaving"
@@ -1976,9 +1856,6 @@
                 "memorial": {
                     "label": "Type"
                 },
-                "message": {
-                    "label": "Bericht"
-                },
                 "microbrewery": {
                     "label": "Microbrouwerij",
                     "terms": "kleine brouwerij,bier,wijn"
@@ -2007,16 +1884,6 @@
                 },
                 "monitoring_multi": {
                     "label": "Gemeten waarden"
-                },
-                "mooring": {
-                    "label": "Ligplaats",
-                    "options": {
-                        "commercial": "Commercieel",
-                        "guest": "Gasten",
-                        "no": "Nee",
-                        "private": "Privé",
-                        "yes": "Ja"
-                    }
                 },
                 "mtb/scale": {
                     "label": "Mountainbike-moeilijkheidsgraad",
@@ -2214,6 +2081,14 @@
                         "underground": "Ondergronds"
                     }
                 },
+                "parking/orientation": {
+                    "label": "Richting",
+                    "options": {
+                        "diagonal": "Diagonaal ten opzichte van de straat",
+                        "parallel": "Parallel aan de straat",
+                        "perpendicular": "Haaks op de straat"
+                    }
+                },
                 "parking_entrance": {
                     "label": "Type"
                 },
@@ -2409,14 +2284,6 @@
                 "post": {
                     "label": "Bezorgadres"
                 },
-                "post_box/type": {
-                    "label": "Type",
-                    "options": {
-                        "lamp": "Bevestigd aan een paal",
-                        "pillar": "Vrijstaande bus",
-                        "wall": "In een muur"
-                    }
-                },
                 "power": {
                     "label": "Type"
                 },
@@ -2512,9 +2379,6 @@
                 },
                 "ref/isil": {
                     "label": "ISIL-referentiecode"
-                },
-                "ref/linz/place_id-NZ": {
-                    "label": "NZGB Place ID"
                 },
                 "ref/vatin": {
                     "label": "BTW-nummer",
@@ -2613,20 +2477,6 @@
                 },
                 "route_master": {
                     "label": "Type"
-                },
-                "royal_cypher": {
-                    "label": "Koninklijk monogram",
-                    "options": {
-                        "CIIIR": "CIIIR (Charles III)",
-                        "EIIR": "EIIR (Elizabeth II)",
-                        "EVIIIR": "EVIIIR (Edward VIII)",
-                        "EVIIR": "EVIIR (Edward VII)",
-                        "GR": "GR (George V)",
-                        "GVIR": "GVIR (George VI)",
-                        "VR": "VR (Victoria)",
-                        "no": "Nee",
-                        "scottish_crown": "Schotse Kroon"
-                    }
                 },
                 "ruins": {
                     "label": "Type"
@@ -2905,26 +2755,12 @@
                 "sport": {
                     "label": "Sporten",
                     "options": {
-                        "athletics": "Atletiek",
-                        "bmx": "BMX",
-                        "canoe": "Kanoën",
-                        "curling": "Curling",
-                        "disc_golf": "Discgolf",
-                        "dog_racing": "Hondenrennen",
-                        "gaelic_games": "Gaelic Games",
-                        "ice_hockey": "IJshockey",
-                        "ice_skating": "Schaatsen",
-                        "ice_stock": "IJsstokschieten",
-                        "multi": "Andere, niet nader gespecificeerde sport",
-                        "pelota": "Pelota",
                         "running": "Hardlopen",
-                        "scuba_diving": "Duiken",
                         "shooting": "Schieten",
                         "skateboard": "Skateboarden",
                         "skiing": "Skiën",
                         "soccer": "Voetbal",
                         "softball": "Softbal",
-                        "speedway": "Speedway",
                         "swimming": "Zwemmen",
                         "table_tennis": "Tafeltennis",
                         "tennis": "Tennis",
@@ -2932,16 +2768,41 @@
                     }
                 },
                 "sport_ice": {
-                    "label": "Sporten"
+                    "label": "Sporten",
+                    "options": {
+                        "curling": "Curling",
+                        "ice_hockey": "IJshockey",
+                        "ice_skating": "Schaatsen",
+                        "ice_stock": "IJsstokschieten",
+                        "multi": "Meerdere"
+                    }
                 },
                 "sport_pub": {
-                    "label": "Sporten"
+                    "label": "Sporten",
+                    "options": {
+                        "billiards": "Biljart",
+                        "darts": "Darts",
+                        "table_soccer": "Tafelvoetbal"
+                    }
                 },
                 "sport_racing_motor": {
-                    "label": "Sporten"
+                    "label": "Sporten",
+                    "options": {
+                        "karting": "Karten",
+                        "motocross": "Motorcross",
+                        "motor": "Motorsport",
+                        "speedway": "Speedway"
+                    }
                 },
                 "sport_racing_nonmotor": {
-                    "label": "Sporten"
+                    "label": "Sporten",
+                    "options": {
+                        "bmx": "BMX",
+                        "cycling": "Fietsen",
+                        "dog_racing": "Hondenrennen",
+                        "horse_racing": "Paardenrennen",
+                        "running": "Hardlopen"
+                    }
                 },
                 "stars": {
                     "label": "Aantal sterren",
@@ -3426,10 +3287,6 @@
                     "placeholder": "https://example.com",
                     "terms": "website,url,webpagina,internet,link"
                 },
-                "website/menu": {
-                    "label": "Link naar menu",
-                    "placeholder": "https://example.com"
-                },
                 "wetland": {
                     "label": "Type",
                     "options": {
@@ -3507,9 +3364,6 @@
                 "address": {
                     "name": "Adres",
                     "terms": "contact,plaats,adresgegevens,straat,huisnummer"
-                },
-                "advertising": {
-                    "name": "Advertentie-object"
                 },
                 "advertising/billboard": {
                     "name": "Reclamebord",
@@ -3777,9 +3631,6 @@
                     "name": "Abortiecentrum",
                     "terms": "abortus"
                 },
-                "amenity/clinic/dialysis": {
-                    "name": "Dialysecentrum"
-                },
                 "amenity/clinic/fertility": {
                     "name": "Vruchtbaarheidskliniek",
                     "terms": "kunstmatige inseminatie,conceptie,voorplanting"
@@ -3839,15 +3690,9 @@
                     "name": "Dokter",
                     "terms": "arts,geneesheer,huisarts"
                 },
-                "amenity/doctors/child_psychiatry": {
-                    "name": "Kinder- en jeugdpsychiater"
-                },
                 "amenity/doctors/gynaecology": {
                     "name": "Gynaecoloog",
                     "terms": "gynaecoloog,vrouw,vrouwenarts,bevalling"
-                },
-                "amenity/doctors/psychiatrist": {
-                    "name": "Psychiater"
                 },
                 "amenity/dojo": {
                     "name": "Dojo / School voor Japanse krijgskunsten",
@@ -4281,9 +4126,6 @@
                     "name": "Japans restaurant",
                     "terms": "japans,sushi"
                 },
-                "amenity/restaurant/korean": {
-                    "name": "Koreaans restaurant"
-                },
                 "amenity/restaurant/mexican": {
                     "name": "Mexicaans restaurant"
                 },
@@ -4298,9 +4140,6 @@
                 "amenity/restaurant/seafood": {
                     "name": "Visrestaurant",
                     "terms": "zeevruchtenrestaurant"
-                },
-                "amenity/restaurant/spanish": {
-                    "name": "Spaans restaurant"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "Vleesrestaurant",
@@ -4366,9 +4205,6 @@
                     "name": "Ambulante zorg",
                     "terms": "ambulant,zorg,gezondheidszorg,medische dienst"
                 },
-                "amenity/social_facility/assisted_living": {
-                    "name": "Woonvoorziening voor senioren"
-                },
                 "amenity/social_facility/food_bank": {
                     "name": "Voedselbank",
                     "terms": "voedselbank"
@@ -4384,9 +4220,6 @@
                 "amenity/social_facility/nursing_home": {
                     "name": "Verpleeghuis",
                     "terms": "woonzorgcentrum,verpleegtehuis,rust- en verzorgingstehuis,rusttehuis,rusthuis,bejaardentehuis,rvt,vvt,wzc"
-                },
-                "amenity/stripclub": {
-                    "name": "Stripclub"
                 },
                 "amenity/studio": {
                     "name": "Studio",
@@ -4784,6 +4617,9 @@
                 "barrier/kissing_gate": {
                     "name": "Voetgangershek",
                     "terms": "veehek,kushek,kusjeshek,kissing gate"
+                },
+                "barrier/log": {
+                    "name": "Omgevallen boom"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "Motorfietsbarrière"
@@ -5375,9 +5211,6 @@
                     "name": "Brandkraan",
                     "terms": "hydrant,straatpot,brandstraatpot"
                 },
-                "emergency/fire_service_inlet": {
-                    "name": "Aansluiting voor de brandweer"
-                },
                 "emergency/first_aid_kit": {
                     "name": "EHBO-kit",
                     "terms": "ehbo-kit,ehbo-set,eerste hulpkit,eerste hulpset,verbandkist"
@@ -5449,9 +5282,6 @@
                 "entrance/main": {
                     "name": "Hoofdingang",
                     "terms": "hoofdingang,toegang,doorgang"
-                },
-                "entrance/staircase": {
-                    "name": "Ingang van trappenhuis"
                 },
                 "ford": {
                     "name": "Voorde (doorwaadbare plaats)",
@@ -5915,8 +5745,8 @@
                     "terms": "historisch,ruïne,vestiging,verdediging,afweer,fort"
                 },
                 "historic/manor": {
-                    "name": "Landhuis",
-                    "terms": "herenhuis,deftig,royaal,statig,woonhuis,villa,woning,havezate"
+                    "name": "Manoir",
+                    "terms": "herenhuis,deftig,royaal,statig,woonhuis,villa,woning"
                 },
                 "historic/memorial": {
                     "name": "Herdenkingsmonument",
@@ -6074,9 +5904,6 @@
                     "name": "Industriegebied",
                     "terms": "industriepark,industriezone,industrieel gebied,industriële zone"
                 },
-                "landuse/industrial/depot": {
-                    "name": "Depot"
-                },
                 "landuse/industrial/scrap_yard": {
                     "name": "Sloperij",
                     "terms": "autokerkhof,oud ijzer,wrakken,schroothoop,metaal"
@@ -6112,7 +5939,8 @@
                     "name": "Marinebasis"
                 },
                 "landuse/military/danger_area": {
-                    "name": "Gevaarlijk gebied, toegang verboden"
+                    "name": "Militaire gevarenzone",
+                    "terms": "bommen,munitie,leger,gevarenzone,geen toegang,ontruimingszone,militaire ontruimingszone"
                 },
                 "landuse/military/obstacle_course": {
                     "name": "Militair hindernissenparcours"
@@ -6361,33 +6189,6 @@
                     "name": "Boogschietbaan",
                     "terms": "handboog,kruisboog,pijl,boog,pijl en boog"
                 },
-                "leisure/pitch/athletics": {
-                    "name": "Atletiekveld"
-                },
-                "leisure/pitch/athletics/discus_throw": {
-                    "name": "Baan voor discuswerpen"
-                },
-                "leisure/pitch/athletics/hammer_throw": {
-                    "name": "Baan voor kogelslingeren"
-                },
-                "leisure/pitch/athletics/high_jump": {
-                    "name": "Hoogspringmat"
-                },
-                "leisure/pitch/athletics/javelin_throw": {
-                    "name": "Speerwerpsector"
-                },
-                "leisure/pitch/athletics/long_jump": {
-                    "name": "Verspringbak"
-                },
-                "leisure/pitch/athletics/pole_vault": {
-                    "name": "Polsstokhoogspringmat"
-                },
-                "leisure/pitch/athletics/shot_put": {
-                    "name": "Kogelstootbaan"
-                },
-                "leisure/pitch/athletics/triple_jump": {
-                    "name": "Hink-stap-sprongbak"
-                },
                 "leisure/pitch/australian_football": {
                     "name": "Australianfootballveld",
                     "terms": "footyveld,australian rules football,aussie rules,rugbyveld"
@@ -6422,7 +6223,8 @@
                     "name": "Cricketveld"
                 },
                 "leisure/pitch/equestrian": {
-                    "name": "Paardrijpiste / rodeo-arena"
+                    "name": "Paardenpiste",
+                    "terms": "piste,paardrijden,manege,arena,ruiter,dressuur"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Veldhockeyveld"
@@ -6562,30 +6364,6 @@
                 "leisure/track": {
                     "name": "Racebaan (niet-motorsport)",
                     "terms": "atletiekbaan,hardloopbaan,stadion,stadium,fietsen,parcours,velodroom,pisterijden,baanwielrennen,skatebaan,skatepiste"
-                },
-                "leisure/track/athletics": {
-                    "name": "Atletiekbaan"
-                },
-                "leisure/track/athletics/javelin_throw": {
-                    "name": "Aanloopbaan speerwerpen"
-                },
-                "leisure/track/athletics/long_jump": {
-                    "name": "Aanloopbaan verspringen"
-                },
-                "leisure/track/athletics/pole_vault": {
-                    "name": "Aanloopbaan polsstokhoogspringen"
-                },
-                "leisure/track/athletics/running": {
-                    "name": "Hardloopbaan"
-                },
-                "leisure/track/athletics/sprint": {
-                    "name": "Sprintbaan"
-                },
-                "leisure/track/athletics/steeplechase": {
-                    "name": "Aanloopbaan voor steeplechase"
-                },
-                "leisure/track/athletics/triple_jump": {
-                    "name": "Aanloopbaan voor hink-stap-sprong"
                 },
                 "leisure/track/cycling": {
                     "name": "Fietscircuit"
@@ -6779,9 +6557,6 @@
                 "man_made/pumping_station": {
                     "name": "Gemaal (waterpompstation)",
                     "terms": "pompstation,waterpompstation"
-                },
-                "man_made/quay": {
-                    "name": "Kade"
                 },
                 "man_made/reservoir_covered": {
                     "name": "Overdekt reservoir"
@@ -8290,7 +8065,8 @@
                     "terms": "audio,bruingoed,hifi,stereoinstallatie"
                 },
                 "shop/hobby": {
-                    "name": "Hobbywinkel"
+                    "name": "Hobbywinkel",
+                    "terms": "hobbywinkel"
                 },
                 "shop/household_linen": {
                     "name": "Winkel voor huishoudelijk linnen",
@@ -8430,6 +8206,10 @@
                 "shop/pet": {
                     "name": "Dierenwinkel",
                     "terms": "dierenzaak,dierenwinkel,huisdieren"
+                },
+                "shop/pet_grooming": {
+                    "name": "Trimsalon",
+                    "terms": "huisdierenverzorging,huisdierentrimsalon,hondenverzorging,hondentrimsalon,kattenverzorging,kattentrimsalon"
                 },
                 "shop/photo": {
                     "name": "Fotowinkel",

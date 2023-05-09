@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.data.download
 
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesType
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
@@ -21,7 +22,7 @@ class Downloader(
     private val notesDownloader: NotesDownloader,
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,
-    private val downloadedTilesController: DownloadedTilesController,
+    private val downloadedTilesDb: DownloadedTilesDao,
     private val mutex: Mutex
 ) {
     suspend fun download(tiles: TilesRect, ignoreCache: Boolean) {
@@ -54,11 +55,11 @@ class Downloader(
     private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
         val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
         val ignoreOlderThan = max(0, nowAsEpochMilliseconds() - freshTime)
-        return downloadedTilesController.contains(tiles, ignoreOlderThan)
+        return downloadedTilesDb.get(tiles, ignoreOlderThan).contains(DownloadedTilesType.ALL)
     }
 
     private fun putDownloadedAlready(tiles: TilesRect) {
-        downloadedTilesController.put(tiles)
+        downloadedTilesDb.put(tiles, DownloadedTilesType.ALL)
     }
 
     companion object {

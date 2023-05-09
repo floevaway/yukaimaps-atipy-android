@@ -26,11 +26,6 @@ class AddRoadWidthTest {
             "surface" to "asphalt"
         ))))
         assertTrue(quest.isApplicableTo(way(tags = mapOf(
-            "source:maxspeed" to "DE:20",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertTrue(quest.isApplicableTo(way(tags = mapOf(
             "maxspeed" to "32",
             "highway" to "residential",
             "surface" to "asphalt"

@@ -5,13 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
     <RelativeLayout
-        android:layout_below="@id/toolbar"
         android:id="@+id/tableHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +37,7 @@
         android:layout_below="@id/tableHeader"
         android:orientation="vertical"
         android:clipToPadding="false"
-        android:paddingBottom="80dp"
+        android:layout_marginBottom="80dp"
         android:scrollbarStyle="outsideOverlay"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="12"
@@ -60,3 +54,5 @@
         android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
+
+
